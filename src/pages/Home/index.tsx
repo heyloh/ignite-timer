@@ -40,10 +40,6 @@ export function Home() {
     reset()
   }
 
-  function handleInterruptCycle() {
-    interruptCurrentCycle()
-  }
-
   const task = watch('task')
   const isSubmitDisabled = !task
   return (
@@ -54,15 +50,11 @@ export function Home() {
         </FormProvider>
         <Countdown />
         {activeCycle ? (
-          <StopCountdownButton type="button" onClick={handleInterruptCycle}>
+          <StopCountdownButton type="button" onClick={interruptCurrentCycle}>
             <HandPalm size={24} /> Interromper
           </StopCountdownButton>
         ) : (
-          <StartCountdownButton
-            onClick={handleInterruptCycle}
-            disabled={isSubmitDisabled}
-            type="submit"
-          >
+          <StartCountdownButton disabled={isSubmitDisabled} type="submit">
             <Play size={24} /> Começar
           </StartCountdownButton>
         )}
